@@ -3,6 +3,7 @@ package com.gildedrose
 class GildedRose(var items: List<Item>) {
 
     fun updateQuality() {
+        //println("updateQuality")
         for (i in items.indices) {
             if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
                 if (items[i].quality > 0) {
