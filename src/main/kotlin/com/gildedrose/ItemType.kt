@@ -3,6 +3,13 @@ package com.gildedrose
 import kotlin.math.max
 import kotlin.math.min
 
+// There are alternatives to an enum, mainly a class hierarchy.
+// IntelliJ even has a "Convert to sealed class" intention for this,
+// which even generates objects for the leaves of the class hierarchy.
+// I choose to stick with an enum because:
+// - KISS
+// - In a "real" application, with an actual database and an ORM,
+//   items probably would have the type as a column, and then an enum is the simpler solution.
 enum class ItemType {
 
     WORSE_WITH_AGE {
@@ -38,27 +45,23 @@ enum class ItemType {
                 quality + 1
         }
     },
-    // TODO CONJURED,
+    CONJURED {
+        override fun newQuality(sellIn: Int, quality: Int): Int {
+            return if (sellIn > 0) quality - 2 else quality - 4;
+        }
+    },
     ;
 
     open fun update(item: Item) {
-        // Be careful that we don't invoke the newX methods with updated values;
-        // this is a danger because of the mutable Item class
-        val tmp = newQuality(item.sellIn, item.quality)
-        val newQuality = max(0, min(tmp, 50))
-        val newSellIn = newSellIn(item.sellIn)
-        item.quality = newQuality
-        item.sellIn = newSellIn
+        val newQuality = newQuality(item.sellIn, item.quality)
+        item.quality = max(0, min(newQuality, 50))
+        item.sellIn = item.sellIn - 1
     }
 
     // This method is internal, which it easier to write some tests
     // (important because of the goblin's preferences).
     internal open fun newQuality(sellIn: Int, quality: Int): Int {
         throw UnsupportedOperationException("newQuality is not supported for: $this")
-    }
-
-    private fun newSellIn(sellIn: Int): Int {
-        return sellIn - 1
     }
 
 }
@@ -99,6 +102,8 @@ val Item.type: ItemType
         // certainly a single pass is just as worthless after a concert as a set of passes.
         else if (name.contains("backstage pass", ignoreCase = true))
             ItemType.BACKSTAGE_PASS
+        else if (name.contains("conjured", ignoreCase = true))
+            ItemType.CONJURED
         else
             ItemType.WORSE_WITH_AGE
     }

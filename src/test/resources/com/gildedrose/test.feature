@@ -14,7 +14,7 @@ Feature: Kotlin
       | Backstage passes to a TAFKAL80ETC concert | 15     | 20      | 14        | 21         |
       | Backstage passes to a TAFKAL80ETC concert | 10     | 49      | 9         | 50         |
       | Backstage passes to a TAFKAL80ETC concert | 5      | 49      | 4         | 50         |
-      #| Conjured Mana Cake                        | 3      | 6       | -100    | -100     | TODO
+      | Conjured Mana Cake                        | 10     | 20      | 9         | 18         |
 
   Scenario Outline: Five days
     Given an item with "<name>", <sellIn> and <quality>
@@ -30,7 +30,7 @@ Feature: Kotlin
       | Backstage passes to a TAFKAL80ETC concert | 15     | 20      | 10        | 25         |
       | Backstage passes to a TAFKAL80ETC concert | 10     | 49      | 5         | 50         |
       | Backstage passes to a TAFKAL80ETC concert | 5      | 49      | 0         | 50         |
-      #| Conjured Mana Cake                        | 3      | 6       | -100    | -100     | TODO
+      | Conjured Mana Cake                        | 10     | 20      | 5         | 10         |
 
   Scenario Outline: Ten days
     Given an item with "<name>", <sellIn> and <quality>
@@ -46,7 +46,7 @@ Feature: Kotlin
       | Backstage passes to a TAFKAL80ETC concert | 15     | 20      | 5         | 35         |
       | Backstage passes to a TAFKAL80ETC concert | 10     | 49      | 0         | 50         |
       | Backstage passes to a TAFKAL80ETC concert | 5      | 49      | -5        | 0          |
-      #| Conjured Mana Cake                        | 3      | 6       | -100    | -100     | TODO
+      | Conjured Mana Cake                        | 10     | 20      | 0         | 0          |
 
   Scenario Outline: Fifteen days
     Given an item with "<name>", <sellIn> and <quality>
@@ -62,7 +62,7 @@ Feature: Kotlin
       | Backstage passes to a TAFKAL80ETC concert | 15     | 20      | 0         | 50         |
       | Backstage passes to a TAFKAL80ETC concert | 10     | 49      | -5        | 0          |
       | Backstage passes to a TAFKAL80ETC concert | 5      | 49      | -10       | 0          |
-      #| Conjured Mana Cake                        | 3      | 6       | -100    | -100     | TODO
+      | Conjured Mana Cake                        | 10     | 20      | -5        | 0          |
 
   Scenario Outline: Twenty days
     Given an item with "<name>", <sellIn> and <quality>
@@ -78,4 +78,4 @@ Feature: Kotlin
       | Backstage passes to a TAFKAL80ETC concert | 15     | 20      | -5        | 0          |
       | Backstage passes to a TAFKAL80ETC concert | 10     | 49      | -10       | 0          |
       | Backstage passes to a TAFKAL80ETC concert | 5      | 49      | -15       | 0          |
-      #| Conjured Mana Cake                        | 3      | 6       | -100    | -100     | TODO
+      | Conjured Mana Cake                        | 10     | 20      | -10       | 0          |

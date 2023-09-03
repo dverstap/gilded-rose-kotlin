@@ -113,10 +113,14 @@ class ItemTypeTest {
         assertEquals(0, BACKSTAGE_PASS.newQuality(-30, 10))
     }
 
-//    @Test
-//    fun `'Conjured' items degrade in Quality twice as fast as normal items`() {
-//        TODO()
-//    }
+    @Test
+    fun `'Conjured' items degrade in Quality twice as fast as normal items`() {
+        assertEquals(8, CONJURED.newQuality(10, 10))
+        assertEquals(8, CONJURED.newQuality(1, 10))
+        assertEquals(6, CONJURED.newQuality(0, 10))
+        assertEquals(6, CONJURED.newQuality(-1, 10))
+        assertEquals(6, CONJURED.newQuality(-10, 10))
+    }
 
     @Test
     fun getType() {
@@ -124,6 +128,6 @@ class ItemTypeTest {
         assertEquals(BETTER_WITH_AGE, Item("x AGED brie y", 0, 0).type)
         assertEquals(LEGENDARY, Item("x SuLfUrAs y", 0, 0).type)
         assertEquals(BACKSTAGE_PASS, Item("x backstage PASS y", 0, 0).type)
-        // TODO assertEquals(CONJURED, Item("x CoNjUrEd y", 0, 0).type)
+        assertEquals(CONJURED, Item("x CoNjUrEd y", 0, 0).type)
     }
 }
