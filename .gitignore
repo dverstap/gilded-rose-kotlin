@@ -8,3 +8,6 @@ vendor
 csharpcore/GildedRoseTests/ApprovalTest.ThirtyDays.received.txt
 
 .gradle
+build
+
+.run

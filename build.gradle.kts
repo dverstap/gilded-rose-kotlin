@@ -1,11 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.10"
+    kotlin("jvm") version "1.9.10"
 }
 
+val jvmVersion = 17
+
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(jvmVersion)
 }
 
 group = "com.gildedrose"
@@ -17,6 +19,8 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
 
     implementation(platform("io.cucumber:cucumber-bom:7.13.0"))
     testImplementation("io.cucumber:cucumber-java8")
@@ -34,7 +38,6 @@ tasks.test {
     }
 }
 
-// config JVM target to 1.8 for kotlin compilation tasks
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.jvmTarget = jvmVersion.toString()
 }
